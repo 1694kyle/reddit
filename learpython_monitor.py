@@ -24,7 +24,7 @@ while True:
         alert_user(sub, not_seen)
 
     time.sleep(5)
-# blah
+
 sys.exit()
 
 
