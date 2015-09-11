@@ -55,12 +55,12 @@ class cSubredditMonitor(object):
                 seen = True
                 # print 'Seen Submission: {}'.format(submission.id)
             yield seen, submission
-#
-# user_agent = 'learnpython monitor by /u/uhkhu'
-#
-# bot = cReddit(subreddit = 'learnpython', user_agent=user_agent)
-# x = 10
-# new = bot.new_gen(x)
-#
-# for seen, sub in new:
-#     print sub.title
+
+
+def test():
+    user_agent = 'learnpython monitor by /u/uhkhu'
+    bot = cSubredditMonitor(subreddit='learnpython', user_agent=user_agent)
+    x = 10
+    new = bot.new_gen(x)
+    for seen, sub in new:
+        print sub.title
