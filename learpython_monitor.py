@@ -34,7 +34,3 @@ while True:
             continue
     time.sleep(5)
 
-
-sys.exit()
-
-
