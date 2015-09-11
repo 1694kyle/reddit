@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a03483a7-6a8e-45d1-b95e-da2d439360d3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt" afterPath="$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/learpython_monitor.py" afterPath="$PROJECT_DIR$/learpython_monitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="reddit.iws" />
@@ -23,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="learpython_monitor.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="learpython_monitor.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/learpython_monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.2635379">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -69,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learnpython_checked.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="learnpython_checked.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4296029">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,9 +104,9 @@
         <option value="$PROJECT_DIR$/bots/startup_scripts/learnpython_monitor_debut.bat" />
         <option value="$PROJECT_DIR$/bots/startup_scripts/learnpython_monitor.cmd" />
         <option value="$PROJECT_DIR$/alert.py" />
-        <option value="$PROJECT_DIR$/learpython_monitor.py" />
         <option value="$PROJECT_DIR$/bots/reddit.py" />
         <option value="$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt" />
+        <option value="$PROJECT_DIR$/learpython_monitor.py" />
       </list>
     </option>
   </component>
@@ -498,7 +500,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441997452185</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="commit">
+      <created>1441997459713</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1441997459713</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -706,16 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/learpython_monitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bots/reddit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -728,9 +726,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4296029">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/learpython_monitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2635379">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

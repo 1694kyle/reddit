@@ -8,12 +8,8 @@ user_agent = 'learnpython/new monitor by /u/uhku'
 sub = 'learnpython'
 bot = cReddit(sub, user_agent)
 
-def alert_user(subreddit, submissions):
-    root = tk.Tk()
-    app = cAlert(root, subreddit, submissions)
-    root.mainloop()
 
-while True:
+def get_submissions():
     new = bot.new_gen(5)
     print '{0} New Loop at {1} {0}'.format('*' * 10, time.ctime())
     not_seen = []
@@ -23,7 +19,21 @@ while True:
     if len(not_seen) > 0:
         alert_user(sub, not_seen)
 
+
+def alert_user(subreddit, submissions):
+    root = tk.Tk()
+    app = cAlert(root, subreddit, submissions)
+    root.mainloop()
+
+while True:
+
+    try:
+        get_submissions()
+    except Exception as e:
+            print e
+            continue
     time.sleep(5)
+
 
 sys.exit()
 
