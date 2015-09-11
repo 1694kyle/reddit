@@ -44,8 +44,8 @@ class cReddit(object):
                 f.write('{}\n'.format(submission_id))
 
     def new_gen(self, n=10):
-        # need to refetch subreddit to get updated submissions
-        self.subreddit = self.r.get_subreddit(self.subreddit_name)
+        # read log file each time
+        self._read_submission_log_file()
         seen = False
         for submission in self.subreddit.get_new(limit=n):
             if submission.id not in self.submission_log:
