@@ -2,7 +2,7 @@ import praw
 from os import environ, stat, path
 from glob import glob
 
-class cReddit(object):
+class cSubredditMonitor(object):
     def __init__(self, subreddit, user_agent):
         self.subreddit_name = subreddit
         self.r = praw.Reddit(user_agent) # ('{} monitor by /u/uhkhu'.format(subreddit))

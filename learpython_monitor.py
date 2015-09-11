@@ -1,4 +1,4 @@
-from bots.reddit import cReddit
+from bots.reddit import cSubredditMonitor
 import Tkinter as tk
 from alert import cAlert
 import sys
@@ -6,7 +6,7 @@ import time
 
 user_agent = 'learnpython/new monitor by /u/uhku'
 sub = 'learnpython'
-bot = cReddit(sub, user_agent)
+bot = cSubredditMonitor(sub, user_agent)
 
 
 def get_submissions():
