@@ -7,7 +7,6 @@ import time
 user_agent = 'learnpython/new monitor by /u/uhku'
 sub = 'learnpython'
 bot = cReddit(sub, user_agent)
-new = bot.new_gen()
 
 def alert_user(subreddit, submissions):
     root = tk.Tk()
@@ -15,6 +14,7 @@ def alert_user(subreddit, submissions):
     root.mainloop()
 
 while True:
+    new = bot.new_gen(5)
     print '{0} New Loop at {1} {0}'.format('*' * 10, time.ctime())
     not_seen = []
     for seen, submission in new:

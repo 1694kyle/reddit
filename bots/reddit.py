@@ -14,7 +14,7 @@ class cReddit(object):
         self.submission_log_file = '{}.txt'.format(self._get_submission_log_file_format())
         self._check_submissions()
         self.submission_log = []
-        self._read_submission_log()
+        self._read_submission_log_file()
 
     def login(self, r):
         r.login(self.username, self.password)
@@ -24,14 +24,14 @@ class cReddit(object):
         checks for existing submission log and creates one if not present
         :return: nothing
         """
-        checked_submission_file = glob(self.submission_log_file_format)
-        if len(checked_submission_file) == 0:
+        submission_log_file_matches = glob(self.submission_log_file_format)
+        if len(submission_log_file_matches) == 0:
             open(self.submission_log_file, 'a').close()
 
     def _get_submission_log_file_format(self):
         return path.join(path.dirname(__file__), 'submission_logs/{0}_checked'.format(self.subreddit))
 
-    def _read_submission_log(self):
+    def _read_submission_log_file(self):
         log = [line.strip() for line in open(self.submission_log_file)]
         self.submission_log = log
 
@@ -44,21 +44,23 @@ class cReddit(object):
                 f.write('{}\n'.format(submission_id))
 
     def new_gen(self, n=10):
+        # need to refetch subreddit to get updated submissions
+        self.subreddit = self.r.get_subreddit(self.subreddit_name)
         seen = False
         for submission in self.subreddit.get_new(limit=n):
             if submission.id not in self.submission_log:
                 self.log_submission(submission.id)
-                print 'logged: {}'.format(submission.id)
+                print 'New Submission logged: {}'.format(submission.id)
             else:
                 seen = True
-                print 'new: {}'.format(submission.id)
+                # print 'Seen Submission: {}'.format(submission.id)
             yield seen, submission
-
-user_agent = 'learnpython monitor by /u/uhkhu'
-
-bot = cReddit(subreddit = 'learnpython', user_agent=user_agent)
-x = 10
-new = bot.new_gen(x)
-
-for seen, sub in new:
-    print sub.title
+#
+# user_agent = 'learnpython monitor by /u/uhkhu'
+#
+# bot = cReddit(subreddit = 'learnpython', user_agent=user_agent)
+# x = 10
+# new = bot.new_gen(x)
+#
+# for seen, sub in new:
+#     print sub.title
