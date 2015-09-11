@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a03483a7-6a8e-45d1-b95e-da2d439360d3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt" afterPath="$PROJECT_DIR$/bots/submission_logs/learnpython_checked.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bots/reddit.py" afterPath="$PROJECT_DIR$/bots/reddit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="reddit.iws" />
@@ -495,7 +492,13 @@
       <option name="project" value="LOCAL" />
       <updated>1441994271653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit">
+      <created>1441997452185</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1441997452185</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
