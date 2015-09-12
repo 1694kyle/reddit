@@ -57,7 +57,7 @@ class cSubredditMonitor(object):
                 seen = True
             yield seen, submission
             
-    def monitor(submission_limit=10):
+    def monitor(self, submission_limit=10):
         while True:
             try:
                 e_occur = 0
@@ -80,11 +80,11 @@ class cSubredditMonitor(object):
                     print 'Trying again'
                     
                     
-        @static        
-        def _alert_user(subreddit, submissions):
-            root = tk.Tk()
-            app = cAlert(root, subreddit, submissions)
-            root.mainloop()
+    @static        
+    def _alert_user(subreddit, submissions):
+        root = tk.Tk()
+        app = cAlert(root, subreddit, submissions)
+        root.mainloop()
 
 
 def test():
