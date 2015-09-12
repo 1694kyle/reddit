@@ -24,9 +24,8 @@ def alert_user(subreddit, submissions):
     root = tk.Tk()
     app = cAlert(root, subreddit, submissions)
     root.mainloop()
-
+    
 while True:
-
     try:
         get_submissions()
     except Exception as e:
