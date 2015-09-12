@@ -60,7 +60,7 @@ class cSubredditMonitor(object):
     def monitor(submission_limit=10):
         while True:
             try:
-                e = 0
+                e_occur = 0
                 print '{0} New Loop at {1} {0}'.format('*' * 10, time.ctime())
                 not_seen = []
                 for seen, submission in self.new_gen(submission_limit):
@@ -68,11 +68,13 @@ class cSubredditMonitor(object):
                         not_seen.append((submission.title, submission.url))
                 if len(not_seen) > 0:
                     self._alert_user(self.subreddit_name, not_seen)
+                time.sleep(5)
+
             except Exception as e:
-                e += 1
+                e_occur += 1
                 print 'error in self.monitor: '
                 print e
-                if e > 10:
+                if e_occur > 10:
                     sys.exit('Unresolvable Error')
                 else:
                     print 'Trying again'
