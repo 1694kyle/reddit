@@ -80,7 +80,7 @@ class cSubredditMonitor(object):
                     print 'Trying again'
                     
                     
-    def _alert_user(subreddit, submissions):
+    def _alert_user(self, subreddit, submissions):
         root = tk.Tk()
         app = cAlert(root, subreddit, submissions)
         root.mainloop()
