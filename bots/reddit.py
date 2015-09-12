@@ -90,10 +90,4 @@ class cSubredditMonitor(object):
 def test():
     user_agent = 'learnpython monitor by /u/uhkhu'
     bot = cSubredditMonitor(subreddit='learnpython', user_agent=user_agent)
-    while True:
-        try:
-            get_submissions()
-        except Exception as e:
-                print e
-                continue
-        time.sleep(5)
+    return bot
