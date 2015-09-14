@@ -86,6 +86,7 @@ class cSubredditMonitor(object):
         app = cAlert(root, subreddit, submissions)
         root.mainloop()
 
+
 class cAlert:
     def __init__(self, root, subreddit, submissions):
         self.root = root
@@ -101,6 +102,5 @@ class cAlert:
 
 
 def test():
-    user_agent = 'learnpython monitor by /u/uhkhu'
-    bot = cSubredditMonitor(subreddit='learnpython', user_agent=user_agent)
+    bot = cSubredditMonitor(subreddit='learnpython')
     return bot
