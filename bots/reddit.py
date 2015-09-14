@@ -2,9 +2,9 @@ import praw
 from os import environ, stat, path
 from glob import glob
 import Tkinter as tk
-from alert import cAlert
 import sys
 import time
+import webbrowser
 
 class cSubredditMonitor(object):
     def __init__(self, subreddit):
@@ -85,6 +85,19 @@ class cSubredditMonitor(object):
         root = tk.Tk()
         app = cAlert(root, subreddit, submissions)
         root.mainloop()
+
+class cAlert:
+    def __init__(self, root, subreddit, submissions):
+        self.root = root
+        for text, url in submissions:
+            link = tk.Label(text=text, foreground="#0000ff")
+            link.bind("<1>", lambda event, url=url: self.click_link(event, url))
+            link.pack()
+
+
+    def click_link(self, event, url):
+        webbrowser.open(url)
+
 
 
 def test():
