@@ -7,9 +7,10 @@ import sys
 import time
 
 class cSubredditMonitor(object):
-    def __init__(self, subreddit, user_agent):
+    def __init__(self, subreddit):
         self.subreddit_name = subreddit
-        self.r = praw.Reddit(user_agent) # ('{} monitor by /u/uhkhu'.format(subreddit))
+        self.user_agent = ('{} monitor by /u/uhkhu'.format(subreddit))
+        self.r = praw.Reddit(self.user_agent)
         self.r_submission = praw.Reddit('Submission variables testing by /u/uhkhu')
         self.subreddit = self.r.get_subreddit(subreddit)
         self.username = environ.get('REDDIT_USERNAME')
