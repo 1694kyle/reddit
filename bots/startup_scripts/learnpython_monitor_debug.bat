@@ -1,4 +1,3 @@
-activate reddit %*
-C:\Users\kbonnet\PycharmProjects\reddit\learpython_monitor.py %*
+learnpython_monitor.cmd %*
 
 PAUSE

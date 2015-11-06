@@ -5,10 +5,12 @@ import Tkinter as tk
 import sys
 import time
 import webbrowser
+from setproctitle import setproctitle
 
 class cSubredditMonitor(object):
     def __init__(self, subreddit):
         self.subreddit_name = subreddit
+        self.process_name = 'python_{}'.format(self.subreddit_name)
         self.user_agent = ('{} monitor by /u/uhkhu'.format(subreddit))
         self.r = praw.Reddit(self.user_agent)
         self.r_submission = praw.Reddit('Submission variables testing by /u/uhkhu')
@@ -18,9 +20,13 @@ class cSubredditMonitor(object):
         self.submission_log_file = '{}.txt'.format(self._get_submission_log_file_format())
         self.submission_log = []
         self._read_submission_log_file()
+        self._setproctitle()
 
     def login(self, r):
         r.login(self.username, self.password)
+        
+    def _setproctitle(self):
+        setproctitle(self.process_name)
 
     def _get_submission_log_file_format(self):
         return path.join(path.dirname(__file__), 'submission_logs/{0}_checked'.format(self.subreddit))
@@ -83,6 +89,7 @@ class cSubredditMonitor(object):
                     
     def _alert_user(self, subreddit, submissions):
         root = tk.Tk()
+        root.wm_title('New post found in {}'.format(subreddit))
         app = cAlert(root, subreddit, submissions)
         root.mainloop()
 
