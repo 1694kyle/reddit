@@ -1,11 +1,11 @@
 import praw
+import os
 from os import environ, stat, path
 from glob import glob
-import Tkinter as tk
 import sys
 import time
-import webbrowser
-from setproctitle import setproctitle
+from gntplib import Publisher
+
 
 class cSubredditMonitor(object):
     def __init__(self, subreddit):
@@ -18,15 +18,12 @@ class cSubredditMonitor(object):
         self.username = environ.get('REDDIT_USERNAME')
         self.password = environ.get('REDDIT_PASSWORD')
         self.submission_log_file = '{}.txt'.format(self._get_submission_log_file_format())
+        self.publisher = Publisher('reddit', ['New Post'])
         self.submission_log = []
         self._read_submission_log_file()
-        self._setproctitle()
 
     def login(self, r):
         r.login(self.username, self.password)
-        
-    def _setproctitle(self):
-        setproctitle(self.process_name)
 
     def _get_submission_log_file_format(self):
         return path.join(path.dirname(__file__), 'submission_logs/{0}_checked'.format(self.subreddit))
@@ -42,7 +39,6 @@ class cSubredditMonitor(object):
         self.submission_log = log
 
     def log_submission(self, submission_id):
-        #todo: figure out size to purge log file
         # if empty file, write
         if stat(self.submission_log_file).st_size == 0:
             with open(self.submission_log_file, 'w') as f:
@@ -52,7 +48,7 @@ class cSubredditMonitor(object):
             with open(self.submission_log_file, 'a') as f:
                 f.write('{}\n'.format(submission_id))
 
-    def new_gen(self, n=10):
+    def new_gen(self, n=1):
         # read log file each time
         self._read_submission_log_file()
         for submission in self.subreddit.get_new(limit=n):
@@ -64,17 +60,17 @@ class cSubredditMonitor(object):
                 seen = True
             yield seen, submission
             
-    def monitor(self, submission_limit=10):
+    def monitor(self, submission_limit=1):
         while True:
             try:
                 e_occur = 0
                 print '{0} New Loop at {1} {0}'.format('*' * 10, time.ctime())
                 not_seen = []
                 for seen, submission in self.new_gen(submission_limit):
-                    if not seen and len(submission.comments) < 3:  # new submission potentially unanswered
+                    if not seen: # and len(submission.comments) < 3:  # new submission potentially unanswered
                         not_seen.append((submission.title, submission.url))
                 if len(not_seen) > 0:
-                    self._alert_user(self.subreddit_name, not_seen)
+                    self._growl_alert(self.subreddit_name, not_seen)
                 time.sleep(5)
 
             except Exception as e:
@@ -85,29 +81,17 @@ class cSubredditMonitor(object):
                     sys.exit('Unresolvable Error')
                 else:
                     print 'Trying again'
-                    
-                    
-    def _alert_user(self, subreddit, submissions):
-        root = tk.Tk()
-        root.wm_title('New post found in {}'.format(subreddit))
-        app = cAlert(root, subreddit, submissions)
-        root.mainloop()
 
-
-class cAlert:
-    def __init__(self, root, subreddit, submissions):
-        self.root = root
+    def _growl_alert(self, subreddit, submissions):
         for text, url in submissions:
-            link = tk.Label(text=text, foreground="#0000ff")
-            link.bind("<1>", lambda event, url=url: self.click_link(event, url))
-            link.pack()
-
-
-    def click_link(self, event, url):
-        webbrowser.open(url)
-
+            self.publisher.publish('New Post', title='New /r/{} Post'.format(self.subreddit_name), text=text, gntp_callback=url)
 
 
 def test():
     bot = cSubredditMonitor(subreddit='learnpython')
-    return bot
+    os.remove(bot.submission_log_file)
+    bot.monitor(2)
+
+
+if __name__ == '__main__':
+    test()
